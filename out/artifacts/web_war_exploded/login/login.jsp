@@ -5,81 +5,43 @@
   Time: 7:32
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<%@ page import="java.util.*" language="java" pageEncoding="UTF-8" %>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <!-- 引入 FrozenUI -->
     <title>登录</title>
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="This is my page">
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/css/login.css'/>">
-    <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
-    <script src="<c:url value='/js/common.js'/>"></script>
-    <script type="text/javascript">
-        $(function() {/*Map<String(Cookie名称),Cookie(Cookie本身)>*/
-            // 获取cookie中的用户名
-            var loginname = window.decodeURI("${cookie.loginname.value}");
-            if("${requestScope.user.loginname}") {
-                loginname = "${requestScope.user.loginname}";
-            }
-            $("#loginname").val(loginname);
-        });
-    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="main">
-
-    <div>
-        <div class="imageDiv"></div>
-        <div class="login1">
-            <div class="login2">
-                <div class="loginTopDiv">
-                    <span class="loginTop">用户登录</span>
-                    <span>
-                <a href="<c:url value='/login/regist.jsp'/>" class="registBtn">注册</a>
-              </span>
-                </div>
-                <div>
-                    <form target="_top" action="<c:url value='/UserServlet'/>" method="post" id="loginForm">
-                        <input type="hidden" name="method" value="login" />
-                        <table>
-                            <tr>
-                                <td width="50"></td>
-                                <td><label class="error" id="msg">${msg }</label></td>
-                            </tr>
-                            <tr>
-                                <td width="50" >用户名</td>
-                                <td><input class="input" type="text" name="loginname" id="loginname"/></td>
-                            </tr>
-                            <tr>
-                                <td height="20">&nbsp;</td>
-                                <td><label id="loginnameError" class="error"></label></td>
-                            </tr>
-                            <tr>
-                                <td>密　码</td>
-                                <td><input class="input" type="password" name="loginpass" id="loginpass" value="${user.loginpass }"/></td>
-                            </tr>
-                            <tr>
-                                <td height="20">&nbsp;</td>
-                                <td><label id="loginpassError" class="error"></label></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td align="left">
-                                    <input type="image" id="submit" src="<c:url value='/images/login1.jpg'/>" class="loginBtn"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
+<div align="center">
+    <div align="center" style="width: 500px;margin-top: 150px">
+        <p class="bg-danger">${msg}</p>
+        <form class="form-horizontal" method="post" action="<%=request.getContextPath()%>/login">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="username" placeholder="用户名" name="username">
                 </div>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" placeholder="密码" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-danger" type="submit">登录</button>
+                    <button class="btn btn-warning">
+                        <a href="${pageContext.request.contextPath}/login/regist.jsp">注册</a>
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 </body>
