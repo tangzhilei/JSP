@@ -1,10 +1,3 @@
 <%-- Created by IntelliJ IDEA. --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title></title>
-  </head>
-  <body>
-hello world!
-  </body>
-</html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<jsp:forward page="/login/login.jsp"/>
