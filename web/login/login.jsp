@@ -36,9 +36,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button class="btn btn-danger" type="submit">登录</button>
-                    <button class="btn btn-warning">
-                        <a href="${pageContext.request.contextPath}/login/regist.jsp">注册</a>
-                    </button>
+                    <a class="btn btn-warning" href="${pageContext.request.contextPath}/login/regist.jsp">注册</a>
                 </div>
             </div>
         </form>

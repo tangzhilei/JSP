@@ -3,9 +3,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 
 /**
@@ -24,7 +22,6 @@ public class LoginServlet extends HttpServlet {
     public void init() throws ServletException {
         //读取配置文件里面的信息
         try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
