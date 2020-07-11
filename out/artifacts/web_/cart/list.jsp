@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="java.util.*" language="java" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">购物车</a>
@@ -26,12 +27,30 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><button class="btn btn-default navbar-btn"><a href="#" >新增商品</a></button></li>
                 <li><button class="btn btn-default navbar-btn"><a href="#">修改密码</a></button></li>
-                <li><a href="#">登出</a></li>
+                <li><a href="#">${requestScope.username}登出</a></li>
             </ul>
         </div>
     </div>
 </nav>
-
-
+<div align="center">
+    <div align="center" style="width: 1000px;margin-top: 150px">
+        <table class="table table-hover" style="margin-top: 100px">
+            <tr>
+                <td>#</td>
+                <td>商品名称</td>
+                <td>价格</td>
+                <td>数量</td>
+            </tr>
+            <c:forEach items="${requestScope.data}" var="cart" varStatus="id">
+                <tr>
+                    <td>${id.index+1}</td>
+                    <td>${cart.name}</td>
+                    <td>${cart.price}</td>
+                    <td>${cart.num}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+</div>
 </body>
 </html>

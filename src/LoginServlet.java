@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
+import java.util.List;
 
+import	java.util.ArrayList;
 /**
  * @Auther: tzl
  * @Date: 2020/7/10 08:59
@@ -47,8 +49,30 @@ public class LoginServlet extends HttpServlet {
             rs = ps.executeQuery();
             if(rs.next())
             {
+                int aid = rs.getInt("id");
                 System.out.println("登录成功");
-                request.setAttribute("data",username);
+                //获取购物车列表
+                String s = "select * from cart where aid=?";
+                ps = con.prepareStatement(s);
+                ps.setInt(1,aid);
+                rs = ps.executeQuery();
+                List<Cart> cartList = new ArrayList<Cart> ();
+                while(rs.next()){
+                    int id = rs.getInt("id");
+                    int num = rs.getInt("num");
+                    double price = rs.getDouble("price");
+                    String name = rs.getString("name");
+                    Cart cart = new Cart();
+                    cart.setId(id);
+                    cart.setName(name);
+                    cart.setNum(num);
+                    cart.setPrice(price);
+                    System.out.println(cart);
+                    cartList.add(cart);
+                }
+                request.setAttribute("username",user);
+                request.setAttribute("data",cartList);
+                request.getRequestDispatcher( "/cart/list.jsp").forward(request, response);
             }else{
                 System.out.println("登录失败，请重新登录");
                 request.setAttribute("msg","账号或密码错误");

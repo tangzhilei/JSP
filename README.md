@@ -7,9 +7,10 @@
 
 ## 2解决方案
 
-- Github仓库创建以及连接
+- Github仓库创建以及上传README.md测试
 - JSP项目搭建
 - 登录、注册、修改密码的实现
+- 查询购物车列表
 
 ## 3具体实现 
 
@@ -24,7 +25,10 @@
        </context-param>`
 
    + Servlet的使用采用注入的方式使用
+     
+```java
      @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
+```
 
    + Servlet携带信息跳转到jsp页面
 
@@ -47,3 +51,10 @@
   ```java
   String s = "INSERT INTO admin(username,password,email) value(?,?,?)";ps = con.prepareStatement(s);ps.setString(1, user);ps.setString(2, pass);ps.setString(3, email);
   ```
+
+- 查询购物车的列表并对结果集处理
+
+  ```java
+  String s = "select * from cart where aid=?";ps = con.prepareStatement(s);ps.setInt(1,aid);rs = ps.executeQuery();List<Cart> cartList = new ArrayList<Cart> ();while(rs.next()){    int id = rs.getInt("id");    int num = rs.getInt("num");    double price = rs.getDouble("price");    String name = rs.getString("name");    Cart cart = new Cart();    cart.setId(id);    cart.setName(name);    cart.setNum(num);    cart.setPrice(price);    System.out.println(cart);    cartList.add(cart);}
+  ```
+
