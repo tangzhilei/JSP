@@ -25,9 +25,9 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><button class="btn btn-default navbar-btn"><a href="#" >返回购物车</a></button></li>
-                <li><button class="btn btn-default navbar-btn"><a href="#">修改密码</a></button></li>
-                <li><a href="#">${requestScope.username}登出</a></li>
+                <li><button class="btn btn-default navbar-btn"><a href="<%=request.getContextPath()%>/cart?username=${requestScope.username}" >返回购物车</a></button></li>
+                <li><button class="btn btn-default navbar-btn"><a href="${pageContext.request.contextPath}/login/updatePwd.jsp?username=${requestScope.username}">修改密码</a></button></li>
+                <li><a href="${pageContext.request.contextPath}/login/login.jsp">${requestScope.username}登出</a></li>
             </ul>
         </div>
     </div>
