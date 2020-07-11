@@ -44,7 +44,7 @@
             </tr>
             <c:forEach items="${requestScope.data}" var="cart" varStatus="id">
                 <tr>
-                    <td>${id.index+1}</td>
+                    <td>${cart.id}</td>
                     <td>${cart.name}</td>
                     <td>${cart.price}</td>
                     <td>${cart.num}</td>
