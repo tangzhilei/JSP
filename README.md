@@ -4,6 +4,7 @@
 
 - git创建仓库
 - 上传项目
+- 数据库名称：db_tzl
 
 ## 2解决方案
 
@@ -58,6 +59,12 @@
 
   ```java
   String s = "select * from cart where aid=?";ps = con.prepareStatement(s);ps.setInt(1,aid);rs = ps.executeQuery();List<Cart> cartList = new ArrayList<Cart> ();while(rs.next()){    int id = rs.getInt("id");    int num = rs.getInt("num");    double price = rs.getDouble("price");    String name = rs.getString("name");    Cart cart = new Cart();    cart.setId(id);    cart.setName(name);    cart.setNum(num);    cart.setPrice(price);    System.out.println(cart);    cartList.add(cart);}
+  ```
+
+- 数据库删除操作
+
+  ```java
+  String str = "DELETE from cart where id=?";con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_tzl?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai",username,password);ps = con.prepareStatement(str);ps.setInt(1, id);int rs1 = ps.executeUpdate();if (rs1 > 0) {    System.out.println("删除成功");}
   ```
 
 - 数据库更新操作
