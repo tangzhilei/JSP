@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><button class="btn btn-default navbar-btn"><a href="#" >新增商品</a></button></li>
-                <li><button class="btn btn-default navbar-btn"><a href="#">修改密码</a></button></li>
+                <li><button class="btn btn-default navbar-btn"><a href="${pageContext.request.contextPath}/login/updatePwd.jsp?username=${requestScope.username}">修改密码</a></button></li>
                 <li><a href="#">${requestScope.username}登出</a></li>
             </ul>
         </div>
@@ -40,6 +40,7 @@
                 <td>商品名称</td>
                 <td>价格</td>
                 <td>数量</td>
+                <td>操作</td>
             </tr>
             <c:forEach items="${requestScope.data}" var="cart" varStatus="id">
                 <tr>
@@ -47,6 +48,7 @@
                     <td>${cart.name}</td>
                     <td>${cart.price}</td>
                     <td>${cart.num}</td>
+                    <td>删除按钮</td>
                 </tr>
             </c:forEach>
         </table>

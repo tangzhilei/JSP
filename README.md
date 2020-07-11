@@ -58,3 +58,8 @@
   String s = "select * from cart where aid=?";ps = con.prepareStatement(s);ps.setInt(1,aid);rs = ps.executeQuery();List<Cart> cartList = new ArrayList<Cart> ();while(rs.next()){    int id = rs.getInt("id");    int num = rs.getInt("num");    double price = rs.getDouble("price");    String name = rs.getString("name");    Cart cart = new Cart();    cart.setId(id);    cart.setName(name);    cart.setNum(num);    cart.setPrice(price);    System.out.println(cart);    cartList.add(cart);}
   ```
 
+- 数据库更新操作
+
+  ```java
+  String s = "UPDATE admin set password=? WHERE username=?";ps = con.prepareStatement(s);ps.setString(1,pass1);ps.setString(2,user);int rs = ps.executeUpdate();if(rs>0){    System.out.println("密码修改成功");    request.setAttribute("msg", "密码修改成功，请重新登录");    request.getRequestDispatcher("/login/login.jsp").forward(request, response);}
+  ```

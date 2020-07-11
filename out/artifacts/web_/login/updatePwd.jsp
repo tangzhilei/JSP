@@ -17,10 +17,14 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<%
+    String  username = request.getParameter("username");
+%>
 <div align="center">
     <div align="center" style="width: 500px;margin-top: 150px">
         <p class="bg-danger">${msg}</p>
-        <form class="form-horizontal" method="post" action="<%=request.getContextPath()%>/">
+        <form class="form-horizontal" method="post" action="<%=request.getContextPath()%>/updatePwd">
+            <input type="hidden" name="username" value="<%=username%>">
             <div class="form-group">
                 <label for="password" class="col-sm-2 control-label">原密码</label>
                 <div class="col-sm-10">
