@@ -65,3 +65,11 @@
   ```java
   String s = "UPDATE admin set password=? WHERE username=?";ps = con.prepareStatement(s);ps.setString(1,pass1);ps.setString(2,user);int rs = ps.executeUpdate();if(rs>0){    System.out.println("密码修改成功");    request.setAttribute("msg", "密码修改成功，请重新登录");    request.getRequestDispatcher("/login/login.jsp").forward(request, response);}
   ```
+
+- 购买商品功能
+
+  1、商品数量减一
+
+  2、把商品信息插入购物车
+
+  3、重新获取所有商品信息

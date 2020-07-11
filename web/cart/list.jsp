@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: admin
+  User: tzl
   Date: 2020/7/10
   Time: 18:53
   To change this template use File | Settings | File Templates.
@@ -34,6 +34,7 @@
 </nav>
 <div align="center">
     <div align="center" style="width: 1000px;margin-top: 150px">
+        <p class="bg-danger">${msg}</p>
         <table class="table table-hover" style="margin-top: 100px">
             <tr>
                 <td>#</td>
@@ -48,7 +49,12 @@
                     <td>${cart.name}</td>
                     <td>${cart.price}</td>
                     <td>${cart.num}</td>
-                    <td>删除按钮</td>
+                    <td><button type="button" class="btn btn-default">
+                        <a href="<%=request.getContextPath()%>/deleteProduct?username=${requestScope.username}&id=${cart.id}" >
+                            删除
+                        </a>
+                    </button>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
