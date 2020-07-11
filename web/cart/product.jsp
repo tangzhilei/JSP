@@ -34,6 +34,7 @@
 </nav>
 <div align="center">
     <div align="center" style="width: 1000px;margin-top: 150px">
+        <p class="bg-danger">${msg}</p>
         <table class="table table-hover" style="margin-top: 100px">
             <tr>
                 <td>#</td>
@@ -48,7 +49,12 @@
                     <td>${cart.name}</td>
                     <td>${cart.price}</td>
                     <td>${cart.num}</td>
-                    <td>购买按钮</td>
+                    <td><button type="button" class="btn btn-default">
+                            <a href="<%=request.getContextPath()%>/buyProduct?username=${requestScope.username}&id=${cart.id}&num=${cart.num}&name=${cart.name}&price=${cart.price}" >
+                                购买一个
+                            </a>
+                        </button>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
